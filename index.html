@@ -17,10 +17,8 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-3Z2JB1TWJ6');
   </script> 
-  </script>
 </head>
 
 <body>
@@ -29,7 +27,6 @@
       <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -49,8 +46,6 @@
         </div>
       </div>
     </section>
-
-</section>
 
     <section id="projects" class="reveal">
       <h2>Projects</h2>
@@ -153,41 +148,6 @@
 - Worked closely with a team of over 30 volunteers to plan and execute educational programs, ensuring smooth operations and successful outcomes.</p>
         </div>
       </div>
-    </section>
-
-    <section id="contact" class="reveal">
-      <h2>Contact</h2>
-      <form action="https://formsubmit.co/nguyentunhu0886@gmail.com" method="POST">
-      <!-- Anti-spam honeypot -->
-      <input type="text" name="_honey" style="display:none">
-      <!-- Disable CAPTCHA -->
-      <input type="hidden" name="_captcha" value="false">
-      <!-- Redirect after submission -->
-      <input type="hidden" name="_next" value="https://yourusername.github.io/portfolio/?message=sent">
-
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" required></textarea>
-
-      <button type="submit">Send</button>
-    </form>
-
-    <script>
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('message') === 'sent') {
-      const messageBox = document.createElement('p');
-      messageBox.textContent = "✅ Message sent successfully!";
-      messageBox.style.color = "green";
-      messageBox.style.fontWeight = "bold";
-      messageBox.style.marginTop = "1rem";
-      document.querySelector("form").after(messageBox);
-    }
-</script>
 
     </section>
   </main>
@@ -210,7 +170,6 @@
     reset: false,
     mobile: true,
   });
-
 
     // Filter logic
     const filterButtons = document.querySelectorAll(".filter-btn");
