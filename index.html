@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nguyen Tu Nhu – Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3Z2JB1TWJ6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-3Z2JB1TWJ6');
+  </script> 
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="about" class="reveal">
+      <div class="about-container">
+        <img src="images/avatar.jpg" alt="Nguyen Tu Nhu" class="about-avatar" />
+        <div class="about-text">
+          <h1>Nguyen Tu Nhu</h1>
+          <p class="tagline">Data Science Student | Aspiring Data Analyst | Python, SQL, Excel, Dashboard Automation</p>
+          <ul>
+            <li><strong>Email:</strong> nguyentunhu0886@gmail.com</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-t%C3%BA-nh%C6%B0-959b35353/" target="_blank">Nguyen Tu Nhu</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/tunhu-da" target="_blank">tunhu-da</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+</section>
+
+    <section id="projects" class="reveal">
+      <h2>Projects</h2>
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-language="all">All</button>
+        <button class="filter-btn" data-language="python">Python</button>
+        <button class="filter-btn" data-language="bi">Power BI</button>
+        <button class="filter-btn" data-language="sql">SQL</button>
+        <button class="filter-btn" data-language="volunteer">Volunteer</button>
+        <button class="filter-btn" data-language="award">Award</button>
+      </div>      
+
+      <div class="project" data-language="bi">
+        <img src="images/Retail-Analysis.png" alt="Nguyen Tu Nhu - Power BI Dashboard of Retail Analysis">
+        <div class="project-details">
+          <h3>Power BI Dashboard of Retail Analysis</h3>
+          <p><strong>Time:</strong> Jun 2025</p>
+          <p>This Power BI retail dashboard connects directly to a MySQL database and was developed to address a common business question:
+“How can we gain clear insights into sales performance and customer behavior across time, regions, and product categories?”</p>
+          <a href="files/Retail-Analysis.pdf" target="_blank" class="dashboard-link">View Dashboard</a>        
+        </div>
+      </div>
+
+      <div class="project" data-language="python">
+        <img src="images/Crawling-E-commerce-platforms-Customer-reviews.jpg" alt="Nguyen Tu Nhu - Crawling E-commerce platforms' Customer reviews">
+        <div class="project-details">
+          <h3>Crawling E-commerce platforms' Customer reviews</h3>
+          <p><strong>Time:</strong> May 2025</p>
+          <p>This project collects comments from three different e-commerce platforms using Selenium for web scraping. It stores documentation in a log file, saves the extracted data in a data folder, and includes bot detection to identify potentially generated comments.</p>
+          <a href="https://github.com/tunhu-da/Crawling-E-commerce-platforms-Customer-reviews" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="project" data-language="award">
+        <img src="images/Student-Scientific-Research-Competition.jpg" alt="Nguyen Tu Nhu - Student Scientific Research Competition">
+        <div class="project-details">
+          <h3>Student Scientific Research Competition by Faculty of Information Technologym UEF</h3>
+          <p><strong>Time:</strong> Apr 2025</p>
+          <p>Apllication of Data Processing tools and Machine Learning algorithms to analyze users' behaviors on top YouTube popular videos.</p>
+          <a href="https://www.uef.edu.vn/tin-tuc-su-kien/dau-an-nghien-cuu-khoa-hoc-cua-iters-tu-tu-duy-cong-nghe-den-giai-phap-thuc-tien-30449" target="_blank">View Article</a>
+        </div>
+      </div>
+
+      <div class="project" data-language="award">
+        <img src="images/National-Mathematics-Olympiad-for-Students.jpb.jpg" alt="Nguyen Tu Nhu - National Mathematics Olympiad">
+        <div class="project-details">
+          <h3>National Mathematics Olympiad for Students</h3>
+          <p><strong>Time:</strong> Apr 2025</p>
+          <p>Bronte Medal on Calculus.</p>
+        </div>
+      </div>
+
+      <div class="project" data-language="python">
+        <img src="images/Credit-Card-Fraud-Detection.jpg" alt="Nguyen Tu Nhu - Fraud Detection on Credit Card Transactions">
+        <div class="project-details">
+          <h3>Fraud Detection on Credit Card Transactions</h3>
+          <p><strong>Time:</strong> Feb 2025</p>
+          <p>Data Preprocessing, Model Selection and Evaluation for binary classification (fraudulent or non-fraudulent transactions)</p>
+          <a href="https://github.com/tunhu-da/Credit-Card-Fraud-Detection" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="project" data-language="python">
+        <img src="images/Synthetic-Financial-Dataset-EDA.jpg" alt="Nguyen Tu Nhu - Synthetic Financial Dataset EDA">
+        <div class="project-details">
+          <h3>Synthetic Financial Dataset EDA</h3>
+          <p><strong>Time:</strong> Jan 2025</p>
+          <p>The Synthetic Financial Dataset EDA project is a comprehensive exploratory data analysis (EDA) of a synthetic financial dataset. This project aims to uncover insights and patterns within the dataset, focusing on various aspects of financial transactions, including fraud detection.</p>
+          <a href="https://github.com/tunhu-da/Synthetic-Financial-Dataset-EDA" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="project" data-language="award">
+        <img src="images/Bosch-Activator.jpg" alt="Nguyen Tu Nhu - Bosch Activator Scholarship">
+        <div class="project-details">
+          <h3>Bosch Activator Scholarship Ambassador</h3>
+          <p><strong>Time:</strong> Dec 2024</p>
+          <p>Develop a solution to leverage Bosch capabilities to #enable future generations (such as gender equality in STEM majors, education access in rural area…)</p>
+        </div>
+      </div>
+
+      <div class="project" data-language="python">
+        <img src="images/BA_DS.jpg" alt="Nguyen Tu Nhu - Data Science Stimulation Job by British Airways">
+        <div class="project-details">
+          <h3>Data Science Stimulation Job by British Airways</h3>
+          <p><strong>Time:</strong> May 2024</p>
+          <p>- Extracted and analyzed over 1000 customer reviews using BeautifulSoup<br>
+- Implemented Random Forest to predict customer satisfaction levels with an accuracy of 92% and key factors affecting it<br>
+- Created professional presentations to effectively communicate data insights and findings</p>
+          <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/British%20Airways/NjynCWzGSaWXQCxSX_British%20Airways_aefoPyB8CiSXPgNLS_1714654355220_completion_certificate.pdf" target="_blank">View Project</a>
+        </div>
+      </div>
+
+      <div class="project" data-language="volunteer">
+        <img src="images/volunteer-math-teacher.jpg" alt="Nguyen Tu Nhu - Volunteer Math Teacher">
+        <div class="project-details">
+          <h3>Volunteer Math Teacher of UEF Service-Learning Center</h3>
+          <p><strong>Time:</strong> Jan - Jun 2024</p>
+          <p>- Delivered engaging and effective lessons in Mathematics and English to rural children, improving their academic performance by 30%.<br>
+- Worked closely with a team of over 30 volunteers to plan and execute educational programs, ensuring smooth operations and successful outcomes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="reveal">
+      <h2>Contact</h2>
+      <form action="https://formsubmit.co/nguyentunhu0886@gmail.com" method="POST">
+      <!-- Anti-spam honeypot -->
+      <input type="text" name="_honey" style="display:none">
+      <!-- Disable CAPTCHA -->
+      <input type="hidden" name="_captcha" value="false">
+      <!-- Redirect after submission -->
+      <input type="hidden" name="_next" value="https://yourusername.github.io/portfolio/?message=sent">
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send</button>
+    </form>
+
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('message') === 'sent') {
+      const messageBox = document.createElement('p');
+      messageBox.textContent = "✅ Message sent successfully!";
+      messageBox.style.color = "green";
+      messageBox.style.fontWeight = "bold";
+      messageBox.style.marginTop = "1rem";
+      document.querySelector("form").after(messageBox);
+    }
+</script>
+
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; <span id="year"></span> Nguyen Tu Nhu.</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    ScrollReveal().reveal(".reveal", {
+    distance: "80px",
+    origin: "bottom",
+    opacity: 0,
+    scale: 0.9,
+    duration: 1200,
+    easing: "cubic-bezier(0.5, 0, 0, 1)",
+    interval: 200,
+    reset: false,
+    mobile: true,
+  });
+
+
+    // Filter logic
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const projects = document.querySelectorAll(".project");
+
+    filterButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const lang = btn.getAttribute("data-language");
+        projects.forEach((project) => {
+          const langs = project.getAttribute("data-language").split(" ");
+          const matches = lang === "all" || langs.includes(lang);
+          project.style.display = matches ? "flex" : "none";
+        });
+      });
+    });
+  </script>
+</body>
+</html>
