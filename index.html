@@ -1,94 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nguyen Tu Nhu | Data Analyst Portfolio</title>
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyen Tu Nhu - Data Analyst Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <div><strong>Nguyen Tu Nhu</strong></div>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </header>
+    <div class="container">
+        <header class="header fade-in">
+            <div class="profile-img">
+                <img src="images\avatar.jpg" alt="Nguyen Tu Nhu" />
+            </div>
+            <h1>Nguyen Tu Nhu</h1>
+            <p class="subtitle">Data Analyst</p>
+            <p class="description">Transforming raw data into actionable insights through advanced analytics, visualization, and strategic thinking to drive business growth.</p>
+        </header>
 
-  <section class="hero" id="about">
-    <div class="hero-text">
-      <h1>Nguyen Tu Nhu</h1>
-      <h2>Aspiring Data Analyst</h2>
-      <p>I collect, analyze, and present data to uncover business insights — from identifying deal hunters in e-commerce to building dashboards for decision-making.</p>
-      <a href="#portfolio" class="btn">See my work</a>
+        <nav class="nav fade-in">
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#resume">Resume</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <section id="about" class="section fade-in">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>I'm Tú Như, a data analyst passionate about solving real-world business challenges through data. With hands-on experience in Python, SQL, and Power BI, I love turning raw data into insights that support smarter decisions.</p>
+                    
+                    <p>I’m comfortable working with Python, R, SQL, Power BI, Excel, GitHub, MySQL, SSMS, and Azure Data Studio. I’m always learning and expanding my toolkit to stay ahead in the fast-evolving data landscape.</p>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="skills" class="section fade-in">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>R</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Visualization</h3>
+                    <ul class="skill-list">
+                        <li>Tableau</li>
+                        <li>Power BI</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                        <li>ggplot2</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Database Management</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>T-SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>Scikit-learn</li>
+                        <li>TensorFlow</li>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="resume" class="section fade-in">
+            <h2>Resume</h2>
+            <div class="resume-content">
+                <div class="resume-download">
+                    <p>Download my complete resume to learn more about my experience and qualifications.</p>
+                    <a href="files\NguyenTuNhu_DataAnalyst_Resume.pdf" class="resume-btn" download>
+                        <span class="resume-icon">📄</span>
+                        Download Resume
+                    </a>
+                </div>
+                
+                <div class="resume-preview">
+                    <div class="resume-item">
+                        <h3>Data Science Student</h3>
+                        <span class="company">University of Economics and Finance (UEF)</span>
+                        <span class="duration">2022 - Present • GPA: 3.4/ 4.0</span>
+                    </div>
+                    <div class="resume-item">
+                        <h3>Academic Achievements</h3>
+                        <span class="company">National Math Olympiad 3rd Prize • UEF Research Competition 3rd Prize</span>
+                        <span class="duration">April 2025</span>
+                    </div>
+                    <div class="resume-item">
+                        <h3>DAZONE 2025 - Top 10</h3>
+                        <span class="company">Data Analysis Competition</span>
+                        <span class="duration">June 2025</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section fade-in">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">🔍</div>
+                    <div class="project-content">
+                        <h3>Customer Segmentation Analysis</h3>
+                        <p>Performed comprehensive customer segmentation using clustering algorithms to identify distinct customer groups, enabling targeted marketing strategies and improved customer retention.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Scikit-learn</span>
+                            <span class="tech-tag">Matplotlib</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link">View Project</a>
+                            <a href="#" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section fade-in">
+            <h2>Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <a href="mailto:nguyentunhu0886@gmail.com">nguyentunhu0886@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <h3>LinkedIn</h3>
+                    <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-t%C3%BA-nh%C6%B0-959b35353/" target="_blank">linkedin.com/in/nguyentunhu</a>
+                </div>
+                <div class="contact-card">
+                    <h3>GitHub</h3>
+                    <a href="https://github.com/nguyentunhu" target="_blank">github.com/nguyentunhu</a>
+                </div>
+            </div>
+        </section>
     </div>
-    <div class="hero-img">
-      <img src="images/avatar.jpg" alt="Nguyen Tu Nhu" />
-    </div>
-  </section>
 
-  <section class="features">
-  <div class="feature">
-    <h3><i class="fas fa-database"></i> Collect</h3>
-    <p>Experience in web scraping (Selenium), SQL queries, and Excel to gather and prepare structured and unstructured datasets for analysis.</p>
-  </div>
-  <div class="feature">
-    <h3><i class="fas fa-cogs"></i> Process</h3>
-    <p>Skilled in Python, R, and data wrangling tools for cleaning, transforming, and modeling data — from financial fraud detection to YouTube behavior analysis.</p>
-  </div>
-  <div class="feature">
-    <h3><i class="fas fa-chart-line"></i> Visualize</h3>
-    <p>Created dashboards using Power BI and Tableau to help teams understand trends, KPIs, and customer behavior in real time.</p>
-  </div>
-</section>
-
-  <div class="portfolio-grid">
-  <div class="project">
-    <img src="images/Crawling-E-commerce-platforms-Customer-reviews.jpg" alt="Crawling E-commerce reviews">
-    <div class="project-details">
-      <h3>E-commerce Review Crawler</h3>
-      <p>Python-based scraping of 600+ product reviews across Thegioididong, Cellphones, Tinhte.</p>
-      <p>Included anti-bot logic and logging features.</p>
-      <a href="https://github.com/tunhu-da/Crawling-E-commerce-platforms-Customer-reviews" target="_blank">View on GitHub</a>
-    </div>
-  </div>
-
-  <div class="project">
-    <img src="images/Credit-Card-Fraud-Detection.jpg" alt="Fraud Detection">
-    <div class="project-details">
-      <h3>Credit Card Fraud Detection</h3>
-      <p>Scikit-learn models (LogReg, Tree, Forest) on 200K+ transactions.</p>
-      <p>Improved F1-score to 0.89 with oversampling.</p>
-      <a href="https://github.com/tunhu-da/Credit-Card-Fraud-Detection" target="_blank">View on GitHub</a>
-    </div>
-  </div>
-
-  <div class="project">
-    <img src="images/Synthetic-Financial-Dataset-EDA.jpg" alt="EDA Financial Dataset">
-    <div class="project-details">
-      <h3>Financial Data EDA</h3>
-      <p>Used Pandas, Matplotlib, Seaborn to explore synthetic transaction data.</p>
-      <p>Prepared for ML feature engineering.</p>
-      <a href="https://github.com/tunhu-da/Synthetic-Financial-Dataset-EDA" target="_blank">View on GitHub</a>
-    </div>
-  </div>
-
-  <div class="project">
-    <img src="images/BA_DS.jpg" alt="British Airways Simulation">
-    <div class="project-details">
-      <h3>British Airways Data Analyst Simulation</h3>
-      <p>Realistic case solving customer satisfaction classification with Random Forest (92% accuracy).</p>
-      <a href="https://forage-uploads-prod.s3.amazonaws.com/completion-certificates/British%20Airways/NjynCWzGSaWXQCxSX_British%20Airways_aefoPyB8CiSXPgNLS_1714654355220_completion_certificate.pdf" target="_blank">View Certificate</a>
-    </div>
-  </div>
-</div>
-
-  <footer id="contact">
-    <p>Contact me: nguyentunhu0886@gmail.com | <a href="https://www.linkedin.com/in/nguy%E1%BB%85n-t%C3%BA-nh%C6%B0-959b35353/" target="_blank">LinkedIn</a> | <a href="https://github.com/nguyentunhu" target="_blank">GitHub</a></p>
-    <p>&copy; 2025 Nguyen Tu Nhu. All rights reserved.</p>
-  </footer>
+    <script src="script.js"></script>
 </body>
 </html>
