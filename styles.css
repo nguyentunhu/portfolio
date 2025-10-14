@@ -203,6 +203,12 @@ body {
     border: 1px solid rgba(255, 215, 0, 0.3);
     position: relative;
     overflow: hidden;
+    /* Add flexbox for vertical centering */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 280px; /* Ensure consistent height across cards */
 }
 
 .skill-card::before {
@@ -227,7 +233,7 @@ body {
 
 .skill-card h3 {
     color: #ffd700;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
     font-size: 1.2rem;
     font-weight: 600;
 }
@@ -235,12 +241,22 @@ body {
 .skill-list {
     list-style: none;
     color: #e0e0e0;
+    width: 100%;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .skill-list li {
     padding: 8px 0;
     position: relative;
     font-weight: 500;
+    width: 100%;
+    text-align: center;
 }
 
 .skill-list li::before {
@@ -357,18 +373,105 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Header & Navigation */
+    .header {
+        padding: 40px 20px;
+    }
+
+    .header h1 {
+        font-size: 2rem;
+    }
+
+    .header .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .header .description {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+    
+    .profile-img {
+        width: 160px;
+        height: 160px;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        padding: 0 15px;
+    }
+
+    .nav a {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+
+    /* Sections */
+    .section {
+        padding: 25px 20px;
+        margin-bottom: 20px;
+    }
+
+    .section h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+
+    /* Skills Grid */
+    .skills-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .skill-card {
+        min-height: auto;
+        padding: 20px 15px;
+    }
+
+    /* Resume Section */
     .resume-content {
         grid-template-columns: 1fr;
-        gap: 30px;
+        gap: 25px;
     }
     
     .resume-download {
-        padding: 25px;
+        padding: 25px 20px;
     }
     
     .resume-btn {
         padding: 12px 25px;
         font-size: 0.9rem;
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .project-card {
+        margin: 0 15px;
+    }
+
+    .project-content {
+        padding: 20px 15px;
+    }
+
+    /* Contact Section */
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 0 15px;
+    }
+
+    /* Container */
+    .container {
+        padding: 15px;
     }
 }
 
