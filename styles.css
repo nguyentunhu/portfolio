@@ -235,20 +235,27 @@ body {
 .skill-list {
     list-style: none;
     color: #e0e0e0;
+    text-align: center;
+    padding: 0;
+    margin: 0;
 }
 
 .skill-list li {
     padding: 8px 0;
     position: relative;
     font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .skill-list li::before {
     content: '→';
     color: #ffd700;
     font-weight: bold;
-    margin-right: 10px;
     font-size: 1.1rem;
+    margin: 0;
 }
 
 .resume-content {
@@ -405,16 +412,14 @@ body {
 }
 
 .project-image {
-    height: 200px;
-    background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffd700;
-    font-size: 3rem;
-    font-weight: bold;
-    position: relative;
-    overflow: hidden;
+  width: 100%;
+  /* Primary: modern browsers */
+  aspect-ratio: 16 / 9; /* enforce 16:9 ratio */
+  /* Keep block formatting; image will absolutely fill this box */
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  display: block;
 }
 
 .project-image::after {
@@ -430,6 +435,25 @@ body {
 
 .project-card:hover .project-image::after {
     left: 100%;
+}
+
+/* Fallback for browsers without aspect-ratio support */
+@supports not (aspect-ratio: 1/1) {
+  .project-image {
+    height: 0;
+    padding-top: 56.25%; /* 9 / 16 = 0.5625 => 56.25% */
+  }
+}
+
+/* Ensure images inside project-image fill the 16:9 area */
+.project-image > img {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .project-content {
