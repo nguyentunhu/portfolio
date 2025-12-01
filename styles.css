@@ -913,7 +913,6 @@ body {
 }
 
 header {
-  position: static;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -925,7 +924,9 @@ header {
 
 @media (max-width: 768px) {
   header {
-    position: static;
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
   }
 }
 
