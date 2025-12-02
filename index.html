@@ -4,7 +4,640 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nguyen Tu Nhu - Data Analyst Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        * {
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .profile-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .profile-img::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shine 3s infinite;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        @keyframes shine {
+            0% { 
+                transform: rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% { 
+                transform: rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 20px;
+        }
+
+        .header .description {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #ffd700;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 25px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 215, 0, 0.2);
+            border-color: #ffd700;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+            color: #fff;
+        }
+
+        .section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        #skills.section,
+        #projects.section {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        #skills.section h2,
+        #projects.section h2 {
+            color: #ffd700;
+            -webkit-text-fill-color: #ffd700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        #projects .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        #projects .project-card h3 {
+            color: #ffd700;
+            -webkit-text-fill-color: #ffd700;
+        }
+
+        #projects .project-card .tech-tag {
+            background: rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.4);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #ffd700, #ff6b35, #ffd700);
+        }
+
+        .section:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ffd700, #ff6b35);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            gap: 40px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .skill-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .skill-card h3 {
+            color: #ffd700;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .skill-list li::before {
+            content: '→';
+            color: #ffd700;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .resume-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .resume-download {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            border-radius: 20px;
+            color: white;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .resume-download p {
+            color: #e0e0e0;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .resume-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+            color: #0f0f23;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 15px 30px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 1rem;
+        }
+
+        .resume-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .resume-preview {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .resume-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ffd700;
+            transition: all 0.3s ease;
+        }
+
+        .resume-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .resume-item h3 {
+            color: #0f0f23;
+            margin-bottom: 8px;
+            font-size: 1.2rem;
+        }
+
+        .company {
+            color: #666;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            position: relative;
+            will-change: transform;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #ffd700, #ff6b35, #ffd700);
+        }
+
+        .project-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+        }
+
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            min-height: 160px;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 25px;
+        }
+
+        .project-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            color: #ffd700;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .project-link {
+            background: linear-gradient(135deg, #ffd700 0%, #ff6b35 100%);
+            color: #0f0f23;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 12px 20px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .project-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+            border-color: #ffd700;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            color: #ffd700;
+        }
+
+        .contact-card a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card a:hover {
+            color: #ffd700;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .header {
+                padding: 40px 20px;
+                margin-bottom: 30px;
+            }
+
+            .profile-img {
+                width: 140px;
+                height: 140px;
+                margin-bottom: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .header .description {
+                font-size: 1rem;
+            }
+
+            .nav {
+                gap: 15px;
+                margin-bottom: 30px;
+            }
+
+            .nav a {
+                padding: 10px 20px;
+                font-size: 0.85rem;
+            }
+
+            .section {
+                padding: 30px 20px;
+                margin-bottom: 25px;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .resume-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .about-text {
+                font-size: 1rem;
+            }
+
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+            
+            .section,
+            .project-card,
+            .contact-card,
+            .nav a {
+                transform: translateZ(0);
+                backface-visibility: hidden;
+                perspective: 1000px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                padding: 30px 15px;
+            }
+
+            .profile-img {
+                width: 100px;
+                height: 100px;
+            }
+
+            .header h1 {
+                font-size: 1.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 1rem;
+            }
+
+            .nav a {
+                padding: 8px 16px;
+                font-size: 0.75rem;
+            }
+
+            .section {
+                padding: 25px 15px;
+            }
+
+            .section h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -31,21 +664,48 @@
                 <div class="about-text">
                     <p>I'm Tú Như, a final-year Data Science student passionate about transforming raw data into meaningful insights that drive smarter business decisions. With hands-on experience in Python, SQL, and Power BI, I specialize in uncovering patterns, optimizing dashboards, and crafting compelling data stories.</p>
                     
-                    <p>My toolkit includes Python, R, SQL, Power BI, Excel, GitHub, MySQL, SSMS, and Azure Data Studio—and I’m constantly expanding it to stay ahead in the fast-evolving analytics landscape. Whether it's financial data or e-commerce trends, I thrive on solving real-world problems through data.</p>
-                    
+                    <p>My toolkit includes Python, R, SQL, Power BI, Excel, GitHub, MySQL, SSMS, and Azure Data Studio—and I'm constantly expanding it to stay ahead in the fast-evolving analytics landscape. Whether it's financial data or e-commerce trends, I thrive on solving real-world problems through data.</p>
                 </div>
-                
             </div>
         </section>
 
         <section id="skills" class="section fade-in">
             <h2>Technical Skills</h2>
-            <div class="skills-text">
-                <p><strong>Programming Languages:</strong> Python, SQL, R</p>
-                <p><strong>Data Visualization:</strong> Power BI, Tableau, Excel</p>
-                <p><strong>Database:</strong> MySQL, SQL Server</p>
-                <p><strong>Tools & Others:</strong> GitHub, Google Colab, SSMS, MySQL Workbench, Azure Data Studio</p>
-                <p><strong>Language:</strong> Vietnamese, English, Chinese</p>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Programming Languages</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>R</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Data Visualization</h3>
+                    <ul class="skill-list">
+                        <li>Tableau</li>
+                        <li>Power BI</li>
+                        <li>Matplotlib</li>
+                        <li>Seaborn</li>
+                        <li>ggplot2</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Database Management</h3>
+                    <ul class="skill-list">
+                        <li>MySQL</li>
+                        <li>T-SQL</li>
+                    </ul>
+                </div>
+                <div class="skill-card">
+                    <h3>Machine Learning</h3>
+                    <ul class="skill-list">
+                        <li>Scikit-learn</li>
+                        <li>TensorFlow</li>
+                        <li>Pandas</li>
+                        <li>NumPy</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
@@ -88,7 +748,7 @@
             <div class="projects-grid">
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/fraud_detection-cover.jpg" alt="Uncovering Financial Fraud Patterns: An Exploratory Data Analysis - Cover" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="images/fraud_detection-cover.jpg" alt="Uncovering Financial Fraud Patterns">
                     </div>
                     <div class="project-content">
                         <h3>Uncovering Financial Fraud Patterns: An Exploratory Data Analysis</h3>
@@ -98,7 +758,7 @@
                             <span class="tech-tag">Matplotlib</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://www.canva.com/design/DAGsZgi7qFI/mHu1BQ9iAfEfOSnINlCyJQ/edit?utm_content=DAGsZgi7qFI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="project-link" target="_blank">View Project</a>
+                            <a href="https://www.canva.com/design/DAGsZgi7qFI/mHu1BQ9iAfEfOSnINlCyJQ/edit" class="project-link" target="_blank">View Project</a>
                             <a href="https://github.com/nguyentunhu/Financial-Fraud-Patterns-EDA" class="project-link" target="_blank">GitHub</a>
                         </div>
                     </div>
@@ -106,7 +766,7 @@
 
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="images/gestalt-cover.jpg" alt="Gestalt - Cover" style="width: 100%; height: 100%; object-fit: cover;">
+                        <img src="images/gestalt-cover.jpg" alt="Gestalt Principles">
                     </div>
                     <div class="project-content">
                         <h3>Why Some Charts Confuse More Than They Clarify — and How Gestalt Fixes That</h3>
@@ -115,11 +775,10 @@
                             <span class="tech-tag">Storytelling</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://www.canva.com/design/DAG1iVOML3U/OoT0A43Z9M3QibdwJrPqrA/edit?utm_content=DAG1iVOML3U&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" class="project-link" target="_blank">View Project</a>
+                            <a href="https://www.canva.com/design/DAG1iVOML3U/OoT0A43Z9M3QibdwJrPqrA/edit" class="project-link" target="_blank">View Project</a>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -142,7 +801,86 @@
         </section>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initial fade in for header
+        setTimeout(() => {
+            document.querySelector('.header').classList.add('visible');
+        }, 100);
+
+        // Add smooth hover effects for project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click to copy functionality for contact information
+        document.querySelectorAll('.contact-card a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if (this.getAttribute('href').startsWith('mailto:')) {
+                    e.preventDefault();
+                    const email = this.textContent;
+                    navigator.clipboard.writeText(email).then(() => {
+                        const originalText = this.textContent;
+                        this.textContent = 'Copied!';
+                        setTimeout(() => {
+                            this.textContent = originalText;
+                        }, 1000);
+                    });
+                }
+            });
+        });
+
+        // Subtle parallax effect
+        let ticking = false;
+
+        function updateParallax() {
+            const scrolled = window.pageYOffset;
+            const header = document.querySelector('.header');
+            if (header) {
+                header.style.backgroundPositionY = `${scrolled * 0.1}px`;
+            }
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                requestAnimationFrame(updateParallax);
+                ticking = true;
+            }
+        });
+    </script>
 </body>
 </html>
