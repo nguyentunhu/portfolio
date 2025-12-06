@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nguyen Tu Nhu - Data Analyst Portfolio</title>
     <style>
+        /* --- OPTIMIZATION 1: REMOVED scroll-behavior: smooth from CSS --- 
+           This fixes the "laggy" feeling on mouse wheels. 
+           We will handle smooth button clicks via JS. */
+
         * {
-            scroll-behavior: smooth;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -20,7 +23,9 @@
             min-height: 100vh;
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+            /* Force GPU Acceleration for the whole page */
+            transform: translateZ(0); 
+            will-change: transform;
         }
 
         .container {
@@ -32,12 +37,17 @@
         .header {
             text-align: center;
             padding: 60px 20px;
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
+            
+            /* --- OPTIMIZATION 2: Removed Backdrop Filter --- */
+            /* Old heavy style: backdrop-filter: blur(20px); */
+            /* New fast style: Slightly more opaque background, no blur calculation */
+            background: rgba(15, 15, 35, 0.85); 
+            
             border-radius: 20px;
             margin-bottom: 40px;
             border: 1px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            /* Reduced shadow spread for performance */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .profile-img {
@@ -58,7 +68,8 @@
             object-fit: cover;
             object-position: center top;
             border-radius: 50%;
-            transition: transform 0.3s ease;
+            /* Only transition transform, not everything */
+            transition: transform 0.3s ease; 
             position: relative;
             z-index: 2;
         }
@@ -67,6 +78,7 @@
             transform: scale(1.05);
         }
 
+        /* Simplified the shine animation slightly */
         .profile-img::after {
             content: '';
             position: absolute;
@@ -75,23 +87,15 @@
             width: 200%;
             height: 200%;
             background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            animation: shine 3s infinite;
+            animation: shine 4s infinite linear; /* changed to linear for smoother CPU load */
             z-index: 1;
             pointer-events: none;
         }
 
         @keyframes shine {
-            0% { 
-                transform: rotate(0deg);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% { 
-                transform: rotate(360deg);
-                opacity: 0;
-            }
+            0% { transform: rotate(0deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: rotate(360deg); opacity: 0; }
         }
 
         .header h1 {
@@ -129,7 +133,7 @@
             padding: 12px 25px;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 50px;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease, background 0.2s ease; /* Faster transition */
             border: 2px solid rgba(255, 215, 0, 0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -140,7 +144,6 @@
             background: rgba(255, 215, 0, 0.2);
             border-color: #ffd700;
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
             color: #fff;
         }
 
@@ -149,33 +152,31 @@
             padding: 40px;
             margin-bottom: 30px;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Reduced shadow */
+            transition: transform 0.3s ease;
             border: 1px solid rgba(255, 215, 0, 0.1);
             position: relative;
             overflow: hidden;
-            will-change: transform;
+            /* Important for scrolling performance: */
+            content-visibility: auto; 
         }
 
         #skills.section,
         #projects.section {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(20px);
+            /* Removed backdrop-filter here too */
+            background: rgba(20, 20, 40, 0.85); 
             border: 1px solid rgba(255, 215, 0, 0.2);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
 
         #skills.section h2,
         #projects.section h2 {
             color: #ffd700;
             -webkit-text-fill-color: #ffd700;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         #projects .project-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 215, 0, 0.2);
-            backdrop-filter: blur(10px);
         }
 
         #projects .project-card h3 {
@@ -199,8 +200,7 @@
         }
 
         .section:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.25);
+            transform: translateY(-5px);
         }
 
         .section h2 {
@@ -253,12 +253,11 @@
             padding: 30px;
             border-radius: 15px;
             border: 1px solid rgba(255, 215, 0, 0.3);
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .skill-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.3);
         }
 
         .skill-card h3 {
@@ -316,7 +315,7 @@
             font-weight: 700;
             padding: 15px 30px;
             border-radius: 30px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-size: 1rem;
@@ -324,7 +323,6 @@
 
         .resume-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
         }
 
         .resume-preview {
@@ -338,12 +336,11 @@
             padding: 20px;
             border-radius: 15px;
             border-left: 4px solid #ffd700;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .resume-item:hover {
             transform: translateX(5px);
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
         .resume-item h3 {
@@ -375,11 +372,10 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
             border: 1px solid rgba(255, 215, 0, 0.2);
             position: relative;
-            will-change: transform;
         }
 
         .project-card::before {
@@ -393,8 +389,7 @@
         }
 
         .project-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+            transform: translateY(-8px);
         }
 
         .project-image {
@@ -456,14 +451,13 @@
             font-weight: 700;
             padding: 12px 20px;
             border-radius: 30px;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             text-transform: uppercase;
             font-size: 0.9rem;
         }
 
         .project-link:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
         }
 
         .contact-info {
@@ -479,15 +473,14 @@
             padding: 35px;
             border-radius: 20px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease;
             border: 2px solid rgba(255, 215, 0, 0.3);
             position: relative;
             overflow: hidden;
         }
 
         .contact-card:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 20px 50px rgba(255, 215, 0, 0.3);
+            transform: translateY(-5px);
             border-color: #ffd700;
         }
 
@@ -508,11 +501,11 @@
             color: #ffd700;
         }
 
+        /* Simplified fade-in without heavy transform calculations */
         .fade-in {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
         .fade-in.visible {
@@ -520,122 +513,26 @@
             transform: translateY(0);
         }
 
-        /* Mobile Styles */
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .header {
-                padding: 40px 20px;
-                margin-bottom: 30px;
-            }
-
-            .profile-img {
-                width: 140px;
-                height: 140px;
-                margin-bottom: 20px;
-            }
-
-            .header h1 {
-                font-size: 2rem;
-            }
-
-            .header .subtitle {
-                font-size: 1.2rem;
-            }
-
-            .header .description {
-                font-size: 1rem;
-            }
-
-            .nav {
-                gap: 15px;
-                margin-bottom: 30px;
-            }
-
-            .nav a {
-                padding: 10px 20px;
-                font-size: 0.85rem;
-            }
-
-            .section {
-                padding: 30px 20px;
-                margin-bottom: 25px;
-            }
-
-            .section h2 {
-                font-size: 2rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .resume-content {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-
-            .about-text {
-                font-size: 1rem;
-            }
-
-            * {
-                -webkit-tap-highlight-color: transparent;
-            }
-            
-            .section,
-            .project-card,
-            .contact-card,
-            .nav a {
-                transform: translateZ(0);
-                backface-visibility: hidden;
-                perspective: 1000px;
-            }
+            .container { padding: 15px; }
+            .header { padding: 40px 20px; margin-bottom: 30px; }
+            .profile-img { width: 140px; height: 140px; margin-bottom: 20px; }
+            .header h1 { font-size: 2rem; }
+            .header .subtitle { font-size: 1.2rem; }
+            .header .description { font-size: 1rem; }
+            .nav { gap: 15px; margin-bottom: 30px; }
+            .nav a { padding: 10px 20px; font-size: 0.85rem; }
+            .section { padding: 30px 20px; margin-bottom: 25px; }
+            .section h2 { font-size: 2rem; }
+            .skills-grid, .resume-content, .projects-grid, .contact-info { grid-template-columns: 1fr; gap: 20px; }
+            .about-text { font-size: 1rem; }
         }
 
         @media (max-width: 480px) {
-            .header {
-                padding: 30px 15px;
-            }
-
-            .profile-img {
-                width: 100px;
-                height: 100px;
-            }
-
-            .header h1 {
-                font-size: 1.5rem;
-            }
-
-            .header .subtitle {
-                font-size: 1rem;
-            }
-
-            .nav a {
-                padding: 8px 16px;
-                font-size: 0.75rem;
-            }
-
-            .section {
-                padding: 25px 15px;
-            }
-
-            .section h2 {
-                font-size: 1.75rem;
-            }
+            .header { padding: 30px 15px; }
+            .profile-img { width: 100px; height: 100px; }
+            .header h1 { font-size: 1.5rem; }
+            .section h2 { font-size: 1.75rem; }
         }
     </style>
 </head>
@@ -800,26 +697,34 @@
     </div>
 
     <script>
-        // Smooth scrolling for navigation links
+        // --- OPTIMIZATION 3: SMOOTH SCROLL VIA JS ONLY ---
+        // This ensures the mouse wheel is instant, but clicking buttons is smooth.
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20, // Offset for padding
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
 
-        // Fade in animation on scroll
+        // Lightweight Intersection Observer
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '50px' // Pre-load animations slightly before they hit screen
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
                 }
             });
         }, observerOptions);
@@ -828,23 +733,12 @@
             observer.observe(el);
         });
 
-        // Initial fade in for header
+        // Instant load header
         setTimeout(() => {
             document.querySelector('.header').classList.add('visible');
-        }, 100);
+        }, 50);
 
-        // Add smooth hover effects for project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-15px) scale(1.02)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-
-        // Add click to copy functionality for contact information
+        // Click to copy (unchanged)
         document.querySelectorAll('.contact-card a').forEach(link => {
             link.addEventListener('click', function(e) {
                 if (this.getAttribute('href').startsWith('mailto:')) {
@@ -859,25 +753,6 @@
                     });
                 }
             });
-        });
-
-        // Subtle parallax effect
-        let ticking = false;
-
-        function updateParallax() {
-            const scrolled = window.pageYOffset;
-            const header = document.querySelector('.header');
-            if (header) {
-                header.style.backgroundPositionY = `${scrolled * 0.1}px`;
-            }
-            ticking = false;
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                requestAnimationFrame(updateParallax);
-                ticking = true;
-            }
         });
     </script>
 </body>
